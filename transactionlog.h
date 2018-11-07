@@ -1,7 +1,8 @@
-#ifndef TRANSACTION_H
-#define TRANSACTION_H
+#ifndef TRANSACTIONLOG_H
+#define TRANSACTIONLOG_H
 
 #include<vector>
+#include "transaction.h"
 
 using namespace std;
 
