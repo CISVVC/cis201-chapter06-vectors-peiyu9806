@@ -15,7 +15,11 @@ using namespace std;
 
 int main()
 {
+    Transactionlog tlog;
 
+    tlog.add_transaction(Transaction(15,-255,"Cash Withdraw"));
+    
+    tlog.print();
     
     return 0;
 }
