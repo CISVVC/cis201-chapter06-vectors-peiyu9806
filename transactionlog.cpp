@@ -1,21 +1,22 @@
 #include<iostream>
 #include "transactionlog.h"
 
-using namespace std;
-
 void Transactionlog::add_transaction(const Transaction &t)
 {
-
+    m_transactions.push_back(t);
 }
 
-int Transactionlog::min_daily_balance()
+void Transactionlog::compute_balances()
 {
-
 }
 
-int Transactionlog::average_daily_balance()
+double Transactionlog::get_average_daily_balance()
 {
+    
+}
 
+double Transactionlog::get_minimum_daily_balance()
+{
 }
 
 void Transactionlog::print()
