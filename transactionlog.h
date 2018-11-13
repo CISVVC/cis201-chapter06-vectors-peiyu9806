@@ -8,8 +8,9 @@ class Transactionlog
 {
 public:
     void add_transaction(const Transaction &t);
-    int min_daily_balance();
-    int average_daily_balance();
+    void compute_balances();
+    double get_average_daily_balance();
+    double get_minimum_daily_balance();
     void print();
 private:
     std::vector<Transaction> m_transactions;
