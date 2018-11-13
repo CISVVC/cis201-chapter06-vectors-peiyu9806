@@ -9,11 +9,32 @@ Data Created: 11-06-2018
 #include<iostream>
 #include<vector>
 
-using namespace std;
-
-
-
 int main()
+{
+   std::vector<Transaction> transaction;
+   bool more = true;
+   while(more)
+   {
+       Transaction t;
+       t.read();
+       transaction.push_back(t);
+       std::cout << "Enter another (Y/N)";
+       string answer;
+       getline(cin, answer);
+       if (answer != "y") 
+           more = false;
+   }
+   print_transactions(transaction);
+    return 0;
+}
+
+
+
+
+
+
+
+/*int main()
 {
     Transactionlog tlog;
 
@@ -22,5 +43,5 @@ int main()
     tlog.print();
     
     return 0;
-}
+}*/
   
