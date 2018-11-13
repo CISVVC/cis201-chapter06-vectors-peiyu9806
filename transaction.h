@@ -9,10 +9,7 @@ class Transaction
 public:
    Transaction();
    void read();
-   int get_day();
-   double get_amount();
    void print() const;
-   void print_transactions(const std::vector<Transaction> t);
 private:
    int day;
    double amount;
