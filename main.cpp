@@ -8,6 +8,13 @@ Data Created: 11-06-2018
 
 #include<iostream>
 #include<vector>
+#include"transaction.h"
+
+void print_transactions(const std::vector<Transaction> t)
+{
+    for(int i=0;i<t.size();i++)
+        t[i].print();
+}
 
 int main()
 {
@@ -19,10 +26,10 @@ int main()
        t.read();
        transaction.push_back(t);
        std::cout << "Enter another (Y/N)";
-       string answer;
-       getline(cin, answer);
-       if (answer != "y") 
-           more = false;
+       char response;
+       std::cin >> response;
+       if(response != 'y' && response != 'Y')
+         more = false;
    }
    print_transactions(transaction);
     return 0;
