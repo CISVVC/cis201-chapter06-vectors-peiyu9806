@@ -18,16 +18,6 @@ void Transaction::read()
     std::getline(std::cin,description);
 }
 
-int Transaction::get_day()
-{
-
-}
-
-double Transaction::get_amount()
-{
-
-}
-
 void Transaction::print() const
 {
     std::cout << "day:" << day << std::endl;
@@ -35,7 +25,7 @@ void Transaction::print() const
     std::cout << "description:" << description << std::endl;
 }
 
-void Transasction::print_transactions(const std::vector<Transaction> t)
+void print_transactions(const std::vector<Transaction> t)
 {
     for(int i=0;i<t.size();i++)
         t[i].print();
