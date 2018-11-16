@@ -9,37 +9,21 @@ Data Created: 11-06-2018
 #include<iostream>
 #include<vector>
 #include"transaction.h"
+#include"transactionlog.h"
 
-void print_transactions(const std::vector<Transaction> t)
+void add_transactions(Transactionlog &tlog)
 {
-    for(int i=0;i<t.size();i++)
-        t[i].print();
+    tlog.add_transaction(Transaction(1,1143.24,"Initial Balance"));
+    tlog.add_transaction(Transaction(2,-200,"Check 2140"));
 }
 
 int main()
 {
-   std::vector<Transaction> transaction;
-   bool more = true;
-   while(more)
-   {
-       Transaction t;
-       t.read();
-       transaction.push_back(t);
-       std::cout << "Enter another (Y/N)";
-       char response;
-       std::cin >> response;
-       if(response != 'y' && response != 'Y')
-         more = false;
-   }
-   print_transactions(transaction);
+    Transactionlog tlog;
+    add_transactions(tlog);
+
+    tlog.print_daily_balance_report();
+    
+
     return 0;
 }
-
-
-
-
-
-
-
-
-  
