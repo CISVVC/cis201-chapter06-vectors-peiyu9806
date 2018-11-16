@@ -1,45 +1,103 @@
 #include<iostream>
+#include<vector>
 #include "transactionlog.h"
 
-void Transactionlog::add_transaction(const Transaction &t)
+void Transactionlog::add_transaction(const Transaction &transaction)
 {
-    m_transactions.push_back(t);
+    m_transactions.push_back(transaction);
 }
 
-void Transactionlog::read()
+std::vector<double> Transactionlog::get_daily_balances() const
 {
-    std::cin.ignore();
-    cin >> m_amount;
-    std::cin.ignore();
-}
-
-double Transactionlog::compute_balances()
-{
-    for(int i=0; i<daily_balances.size(); i++)
+    std::vector<double> daily_balances;
+    double balance = 0.0;
+    for(int day=0;day<MAX_DAY;day++)
     {
-        m_total_balance += daily_balances[i];
+        balance += get_transaction_total_for_day(day+1);  // day + 1 because we are starting at 0
+        daily_balances.push_back(balance);
     }
-    return m_total_balance;
+    return daily_balances;
 }
 
-double Transactionlog::min_daily_balance()
+double Transactionlog::get_balance(int day) const
 {
-    m_min_balance = 500.00;
-    return m_min_balance;
+    std::vector<double> balances = get_daily_balances();
+    return balances[day];
 }
 
-double Transactionlog::average_daily_balance()
+double Transactionlog::get_average_daily_balance(const std::vector<double> &balances) const
 {
-    m_average_balance = m_total_balance / MAX_DAY;
-    return m_average_balance;
+    int sum = 0;
+    for(int i=0;i<balances.size(); i++)
+    {
+        sum +=balances[i];
+    }
+    return sum / balances.size();
 }
 
-void Transactionlog::earned_interest()
+double Transactionlog::get_min_daily_balance(const std::vector<double> &balances) const
 {
-    m_interest = m_total_balance * (1 + INTEREST);
+    double lowest = balances[0];
+    for(int i=0;i<balances.size();i++)
+    {
+        if(balances[i] < lowest)
+            lowest = balances[i];   
+    }
+    return lowest;
 }
 
-void Transactionlog::print()
+double Transactionlog::get_transaction_total_for_day(int day) const
 {
-    
+    int sum = 0;
+    for(int i = 0;i<m_transactions.size();i++)
+    {
+        if(m_transactions[i].get_day() == day)
+        {
+            sum += m_transactions[i].get_amount();    
+        }
+    }
+    return sum;
+}
+
+void Transactionlog::print_transaction_for_day(int day) const
+{
+    for(int i=0;i<m_transactions.size();i++)
+    {
+        if(m_transactions[i].get_day() == day)
+        {
+            std::cout << m_transactions[i].get_day() << '\t' << m_transactions[i].get_amount() << std::endl;
+        }
+    }
+}
+
+void Transactionlog::print_statement_header()const
+{
+    std::cout << "---------- Statement ---------- " << std::endl;
+}
+
+void Transactionlog::print() const
+{
+    for(int i=0;i<m_transactions.size();i++)
+    {
+        std::cout << "Day   Amount    Description" << std::endl;
+        std::cout << m_transactions[i].get_day() << "   " << m_transactions[i].get_amount() << "    " << m_transactions[i].get_descri() << std::endl;
+        std::cout << "----------------------------------" << std::endl;
+        std::cout << "Balance for day " << m_transactions[i].get_day() << ": " << get_balance(i) << std::endl << std::endl;
+    }
+} 
+
+void Transactionlog::print_daily_balance_report()const
+{
+    print_statement_header();
+    print();
+    std::vector<double> balances = get_daily_balances();
+    for(int day=0;day<MAX_DAY;day++)
+    {
+        std::cout<<balances[day] << std::endl;
+    }
+
+    std::cout << "average daily balance: " << get_average_daily_balance(balances);
+    std::cout << "Interest: " << get_average_daily_balance(balances) * INTEREST << std::endl;
+    std::cout << "Minimum daily balance: " << get_min_daily_balance(balances);
+    std::cout << "Interest: " << get_min_daily_balance(balances) * INTEREST << std::endl;
 }
