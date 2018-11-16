@@ -1,19 +1,39 @@
 #include <iostream>
 #include <string>
-#include <vector>
 #include "transaction.h"
 
 Transaction::Transaction()
 {
-   day = 0;
-   amount = 0.0;
+   m_day = 0;
+   m_amount = 0.0;
+}
+
+Transaction::Transaction(int m_day, double m_amount, std::string m_description) 
+{
+    day = m_day;
+    amount = m_amount; 
+    description = m_description;
+}
+
+int Transaction::get_day() const
+{
+    return day;
+}
+
+double Transaction::get_amount() const
+{
+    return amount;
+}
+
+std::string Transaction::get_descri() const
+{
+    return description;
 }
 
 void Transaction::read()
 {
     std::cin >> day;
     std::cin >> amount;
-    std::string remainder;
     std::cin.ignore();
     std::getline(std::cin,description);
 }
