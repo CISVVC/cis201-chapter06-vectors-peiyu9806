@@ -11,10 +11,6 @@ Data Created: 11-06-2018
 #include"transaction.h"
 #include"transactionlog.h"
 
-/**
-   Adding transactions details 
-   @param tlog the object 
-*/ 
 void add_transactions(Transactionlog &tlog)
 {
     tlog.add_transaction(Transaction(1,1143.24,"Initial Balance"));
