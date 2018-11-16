@@ -4,27 +4,23 @@
 #include<vector>
 #include "transaction.h"
 
+const int MAX_DAY = 30;
+const double INTEREST = 0.05;
+
 class Transactionlog
 {
-public:
-    void add_transaction(const Transaction &t);
-    void read();
-    double compute_balances();
-    double min_daily_balance();
-    double average_daily_balance();
-    void earned_interest();
-    void print();
-private:
     std::vector<Transaction> m_transactions;
-    std::vector<double> daily_balances;
-    double m_amount;
-    double m_balance;
-    double m_min_balance;
-    double m_average_balance;
-    double m_total_balance;
-    double m_interest;
-    const int MAX_DAY = 30;
-    const double INTEREST = 0.05;
+public:
+    void add_transaction(const Transaction &transaction);
+    std::vector<double> get_daily_balances() const;
+    double get_balance(int day) const;
+    double get_average_daily_balance(const std::vector<double> &balances) const;
+    double get_min_daily_balance(const std::vector<double> &balances) const;
+    double get_transaction_total_for_day(int day)const;
+    void print_transaction_for_day(int day) const;
+    void print_statement_header()const;
+    void print_daily_balance_report()const;
+    void print() const;
 };
 
 #endif
