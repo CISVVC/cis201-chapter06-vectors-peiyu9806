@@ -16,12 +16,12 @@ void add_transactions(Transactionlog &tlog)
     tlog.add_transaction(Transaction(1,1143.24,"Initial Balance"));
     tlog.add_transaction(Transaction(2,-20,"ATM"));
     tlog.add_transaction(Transaction(3,122,"Centrelink benefit"));
-    tlog.add_transaction(Transaction(4,-127.36,"Supermarket"));
+    tlog.add_transaction(Transaction(4,-127.44,"Supermarket"));
     tlog.add_transaction(Transaction(5,-60,"ATM"));
-    tlog.add_transaction(Transaction(6,-53.26,"Car insurance"));
+    tlog.add_transaction(Transaction(6,-53.27,"Car insurance"));
     tlog.add_transaction(Transaction(12,500,"Cash deposit"));
     tlog.add_transaction(Transaction(15,122,"Centrelink benefit"));
-    tlog.add_transaction(Transaction(19,-155.36,"Supermarket"));
+    tlog.add_transaction(Transaction(19,-155.89,"Supermarket"));
     tlog.add_transaction(Transaction(23,-200,"Check 2144"));
     tlog.add_transaction(Transaction(27,200,"Cash deposit"));
     tlog.add_transaction(Transaction(30,385,"Wages"));
