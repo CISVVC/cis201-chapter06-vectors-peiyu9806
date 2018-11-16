@@ -5,7 +5,7 @@
 #include "transaction.h"
 
 const int MAX_DAY = 30;
-const double INTEREST = 0.05;
+const double INTEREST = 0.005;
 
 class Transactionlog
 {
