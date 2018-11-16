@@ -27,7 +27,7 @@ double Transactionlog::get_balance(int day) const
 
 double Transactionlog::get_average_daily_balance(const std::vector<double> &balances) const
 {
-    int sum = 0;
+    double sum = 0.0;
     for(int i=0;i<balances.size(); i++)
     {
         sum +=balances[i];
@@ -48,7 +48,7 @@ double Transactionlog::get_min_daily_balance(const std::vector<double> &balances
 
 double Transactionlog::get_transaction_total_for_day(int day) const
 {
-    int sum = 0;
+    double sum = 0.0;
     for(int i = 0;i<m_transactions.size();i++)
     {
         if(m_transactions[i].get_day() == day)
