@@ -11,10 +11,24 @@ Data Created: 11-06-2018
 #include"transaction.h"
 #include"transactionlog.h"
 
+/**
+   Adding transactions details 
+   @param tlog the object 
+*/ 
 void add_transactions(Transactionlog &tlog)
 {
     tlog.add_transaction(Transaction(1,1143.24,"Initial Balance"));
-    tlog.add_transaction(Transaction(2,-200,"Check 2140"));
+    tlog.add_transaction(Transaction(2,-20,"ATM"));
+    tlog.add_transaction(Transaction(3,122,"Centrelink benefit"));
+    tlog.add_transaction(Transaction(4,-127.36,"Supermarket"));
+    tlog.add_transaction(Transaction(5,-60,"ATM"));
+    tlog.add_transaction(Transaction(6,-53.26,"Car insurance"));
+    tlog.add_transaction(Transaction(12,500,"Cash deposit"));
+    tlog.add_transaction(Transaction(15,122,"Centrelink benefit"));
+    tlog.add_transaction(Transaction(19,-155.36,"Supermarket"));
+    tlog.add_transaction(Transaction(23,-200,"Check 2144"));
+    tlog.add_transaction(Transaction(27,200,"Cash deposit"));
+    tlog.add_transaction(Transaction(30,385,"Wages"));
 }
 
 int main()
@@ -24,6 +38,5 @@ int main()
 
     tlog.print_daily_balance_report();
     
-
     return 0;
 }
